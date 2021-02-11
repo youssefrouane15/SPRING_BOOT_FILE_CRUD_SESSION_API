@@ -14,15 +14,16 @@ Créer les controller pour les 4 principaux verbes Http
 
 ## Etape 4 : Lire et exposer le fichier
 Lire le fichier json avec le contenu suivant :  
-[
-    {"id":1, "label": "allianz", "date":"2021-10-01"},
-    {"id":2, "label": "toto", "date":"2021-10-02"},
-    {"id":3, "label": "oto", "date":"2021-10-01"},
-    {"id":4, "label": "123456654321", "date":"2021-10-03"},
-    {"id":5, "label": "kayak", "date":"2021-10-04"},
-    {"id":6, "label": "radar", "date":"2021-10-05"},
-    {"id":7, "label": "sagas", "date":"2021-10-02"}
-]
+ 
+>[
+>    {"id":1, "label": "allianz", "date":"2021-10-01"},
+>    {"id":2, "label": "toto", "date":"2021-10-02"},
+>    {"id":3, "label": "oto", "date":"2021-10-01"},
+>    {"id":4, "label": "123456654321", "date":"2021-10-03"},
+>    {"id":5, "label": "kayak", "date":"2021-10-04"},
+>    {"id":6, "label": "radar", "date":"2021-10-05"},
+>    {"id":7, "label": "sagas", "date":"2021-10-02"}
+>]
   
 ## Etape 5 : Exposer
 Exposer le contenu du ficher via les controlleurs  
