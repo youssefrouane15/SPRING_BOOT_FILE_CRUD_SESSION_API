@@ -98,14 +98,14 @@ public class JsonHandler {
 
 	}
 
-	public JSONObject findItem(Object keyWord) {
+	public JSONObject findItem(Long id) {
 
 		JSONArray items = readItems();
 		JSONObject foundItem = null;
 
 		for (Object item : items) {
 			JSONObject jsonObject = (JSONObject) item;
-			if (jsonObject.containsValue(keyWord)) {
+			if (jsonObject.containsValue(id)) {
 				foundItem = jsonObject;
 			}
 
