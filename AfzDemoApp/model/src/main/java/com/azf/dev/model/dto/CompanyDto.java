@@ -1,19 +1,21 @@
-package com.azf.dev.model;
+package com.azf.dev.model.dto;
 
-public class Item {
+import java.util.Date;
+
+public class CompanyDto {
 
 	private Long id;
 
 	private String label;
 
-	private String date;
+	private Date date;
 
-	public Item() {
+	public CompanyDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Item(Long id, String label, String date) {
+	public CompanyDto(Long id, String label, Date date) {
 		super();
 		this.id = id;
 		this.label = label;
@@ -36,11 +38,11 @@ public class Item {
 		this.label = label;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

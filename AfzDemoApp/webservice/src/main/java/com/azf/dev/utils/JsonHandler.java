@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -17,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
-import com.azf.dev.model.Item;
+import com.azf.dev.model.dto.CompanyDto;
 
 @Component
 public class JsonHandler {
@@ -26,44 +27,44 @@ public class JsonHandler {
 			+ "items.json";
 
 	@SuppressWarnings("unchecked")
-	public JSONObject createJSONObject(Item item) {
+	public JSONObject createJSONObject(CompanyDto companyDto) {
 
 		JSONObject itemDetails = new JSONObject();
-		itemDetails.put("id", item.getId());
-		itemDetails.put("label", item.getLabel());
-		itemDetails.put("date", item.getDate());
+		itemDetails.put("id", companyDto.getId());
+		itemDetails.put("label", companyDto.getLabel());
+		itemDetails.put("date", companyDto.getDate());
 
 		return itemDetails;
 	}
 
-	public Item createItem(JSONObject jsonObject) {
+	public CompanyDto createItem(JSONObject jsonObject) {
 
-		Item item = new Item();
-		item.setId((Long) jsonObject.get("id"));
-		item.setLabel((String) jsonObject.get("label"));
-		item.setDate((String) jsonObject.get("date"));
+		CompanyDto companyDto = new CompanyDto();
+		companyDto.setId((Long) jsonObject.get("id"));
+		companyDto.setLabel((String) jsonObject.get("label"));
+		companyDto.setDate((Date) jsonObject.get("date"));
 
-		return item;
+		return companyDto;
 	}
 
-	public List<Item> createItems(JSONArray jsonArray) {
+	public List<CompanyDto> createItems(JSONArray jsonArray) {
 
-		List<Item> items = new ArrayList<>();
+		List<CompanyDto> companyDtos = new ArrayList<>();
 		for (Object obj : jsonArray) {
 			JSONObject jsonObject = (JSONObject) obj;
-			items.add(createItem(jsonObject));
+			companyDtos.add(createItem(jsonObject));
 		}
 
-		return items;
+		return companyDtos;
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeItem(Item item) throws IOException {
+	public void writeItem(CompanyDto companyDto) throws IOException {
 
 		// convert the model object to Json Object
 		JSONArray array = readItems();
-		JSONObject jsonObject = createJSONObject(item);
-		JSONObject foundItem = findItem(item.getId());
+		JSONObject jsonObject = createJSONObject(companyDto);
+		JSONObject foundItem = findItem(companyDto.getId());
 		// if an item is found ---> proceed to update the object ----> 
 		// we replace the existing entry with the new one
 		

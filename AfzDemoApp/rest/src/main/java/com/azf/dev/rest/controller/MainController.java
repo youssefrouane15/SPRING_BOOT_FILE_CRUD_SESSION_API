@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.azf.dev.model.Item;
+import com.azf.dev.model.dto.CompanyDto;
+import com.azf.dev.model.dto.request.CompanyRequest;
 import com.azf.dev.service.FileService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -30,8 +31,8 @@ public class MainController {
 	private FileService fileService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Item>> getItems(HttpSession session) throws IOException {
-        List<Item> foundItem = fileService.findAll(session);
+	public ResponseEntity<List<CompanyDto>> getItems(HttpSession session) throws IOException {
+        List<CompanyDto> foundItem = fileService.findAll(session);
         if (foundItem == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -40,8 +41,8 @@ public class MainController {
 	}
 
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Item> getItem(@PathVariable Long id, HttpSession session) throws IOException {
-        Item foundItem = fileService.findOne(id, session);
+	public ResponseEntity<CompanyDto> getItem(@PathVariable Long id, HttpSession session) throws IOException {
+        CompanyDto foundItem = fileService.findOne(id, session);
         if (foundItem == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -49,9 +50,9 @@ public class MainController {
         }	}
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Item> create(@RequestBody Item item, HttpSession session)
+    public ResponseEntity<CompanyDto> create(@RequestBody CompanyRequest companyRequest, HttpSession session)
             throws  JsonProcessingException {
-    	Item createdItem = fileService.add(item,session);
+    	CompanyDto createdItem = fileService.add(companyRequest,session);
         if (createdItem == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -60,9 +61,9 @@ public class MainController {
     }
 
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Item> updateItem(@RequestBody Item item, HttpSession session) throws JsonProcessingException  {
+	public ResponseEntity<CompanyDto> update(@RequestBody CompanyRequest companyRequest, HttpSession session) throws JsonProcessingException  {
 
-        Item updatedItem = fileService.update(item.getId(), item,session);
+        CompanyDto updatedItem = fileService.update(companyRequest.getId(), companyRequest, session);
         if (updatedItem == null) {
             return ResponseEntity.notFound().build();
         } else {
