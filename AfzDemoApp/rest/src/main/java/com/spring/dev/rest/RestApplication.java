@@ -1,11 +1,11 @@
-package com.azf.dev.rest;
+package com.spring.dev.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.azf.dev")
+@ComponentScan(basePackages = "com.spring.dev")
 public class RestApplication {
 
 	public static void main(String[] args) {

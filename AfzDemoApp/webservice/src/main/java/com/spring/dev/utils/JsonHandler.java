@@ -1,4 +1,4 @@
-package com.azf.dev.utils;
+package com.spring.dev.utils;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
-import com.azf.dev.model.dto.CompanyDto;
+import com.spring.dev.model.dto.CompanyDto;
 
 @Component
 public class JsonHandler {

@@ -1,4 +1,4 @@
-package com.azf.dev.model.dto.request;
+package com.spring.dev.model.dto.request;
 
 import java.util.Date;
 
